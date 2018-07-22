@@ -1,6 +1,6 @@
 import React from "react";
 
-import Header from "./Main/Sentence";
+import Sentence from "./Main/Sentence";
 import MainBody from "./Main/Word";
 import Tool from "./Main/Tool";
 
@@ -10,6 +10,13 @@ export default class Main extends React.Component {
     constructor(props) {
         super(props);
         this.direction = '';
+        this.slideCorrectAnswer = {
+            'wh': [],
+            'wu': [],
+            'li': [],
+            'ld': []
+        };
+        this.allSentences = [];
     }
     shouldComponentUpdate(nextProps) {
         this.init(nextProps.screenContent);
@@ -19,18 +26,48 @@ export default class Main extends React.Component {
     /* first method to get call */
     init(data) {
         const currentPagedata = data;
+        this.populateSentence(currentPagedata);
     }
     /* method to populate direction */
     populateDirection(direction) {
         this.direction = direction.text;
     }
     /* populate corrct answers */
-    populateCorrectAnswers() {
-
+    populateSentence(pageData) {
+        const allSentenceArray = pageData.sentences.sentence.text;
+        for (let sentence of allSentenceArray) {
+            let allWords = sentence.trim().split(' ');
+            let sentenceAfterTrim = '';
+            for (let word of allWords) {
+                let wordAfterTrim = this.findWordOperation(word);
+                sentenceAfterTrim += ` ${wordAfterTrim}`;
+            }
+            this.allSentences.push(sentenceAfterTrim.trim());
+        }
+        this.populateSentenceComponent();
+    }
+    /* finds word operation */
+    findWordOperation(word) {
+        if (word.indexOf('{wh}') >= 0 && word.indexOf('{/wh}') >= 0) {
+            word = word.match("{wh}(.*){/wh}")[1];
+            this.slideCorrectAnswer.wh.push(word);
+        } else if (word.indexOf('{wu}') >= 0 && word.indexOf('{/wu}') >= 0) {
+            word = word.match("{wu}(.*){/wu}")[1];
+            this.slideCorrectAnswer.wu.push(word);
+        } else if (word.indexOf('{li}') >= 0 && word.indexOf('{/li}') >= 0) {
+            word = word.match("{li}(.*){/li}")[1];
+            this.slideCorrectAnswer.li.push(word);
+        } else if (word.indexOf('{ld}') >= 0 && word.indexOf('{/ld}') >= 0) {
+            word = word.match("{ld}(.*){/ld}")[1];
+            this.slideCorrectAnswer.ld.push(word);
+        }
+        return word;
     }
     /* popuplate sentence component */
-    populateSentence() {
-        // send each sentence item
+    populateSentenceComponent() {
+        this.allSentencesComponents = this.allSentences.map((sentence, index) => {
+            return <Sentence key={index} content={sentence} />
+        });
     }
     /* check correct answers */
     checkCorrectAnswer() {
@@ -42,16 +79,14 @@ export default class Main extends React.Component {
         const userAnswers = this.getAnswers();
         // validate with correct ans
     }
-    /* method to reset all selection */
-    reset() {
-
-    }
     /* get user user response */
     getAnswers() {
 
     }
+    /* method to reset all selection */
+    reset() {
 
-
+    }
 
     render() {
         return (
@@ -62,11 +97,7 @@ export default class Main extends React.Component {
                         <div class={Styles.slideData}>
                             <div class="slide-section" role="application">
                                 <div class={Styles.answerSection}>
-                                    <div class="col-xs-15" ng-repeat="qstn in qstnSets">
-                                        <div droppable id="droppableBin{{$index}}" class="answer-box droppable" ng-class="{'right':$last}" tabIndex="0" aria-label="droppable {{qstn.trimedTitle}}">
-                                            <div class="content-title" ng-bind-html="qstn.title" ></div>
-                                        </div>
-                                    </div>
+                                    {this.allSentencesComponents}
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="clearfix"></div>

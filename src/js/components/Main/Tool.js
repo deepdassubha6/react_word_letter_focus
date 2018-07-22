@@ -7,8 +7,9 @@ export default class Tpol extends React.Component {
     constructor() {
         super();
         this.toolItems = '';
-        this.toolList = ['word Highlight', 'word Underline', 'letter Identification', 'word Divide', 'erase'];
+        this.toolList = ['word Highlight', 'word Underline', 'letter Identification', 'letter Divide', 'erase'];
         this.populateTools(this.toolList);
+        window.toolName = 'word Highlight';
     }
     setToolName(toolName) {
        window.toolName = toolName;

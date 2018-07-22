@@ -1,18 +1,31 @@
 import React from "react";
 
 import Word from "./Word";
+import Styles from "./sentence.css";
 
 export default class Sentence extends React.Component {
-  handleChange(e) {
-    const title = e.target.value;
-    this.props.changeTitle(title);
+  constructor(props) {
+    super(props);
+    this.popualteWordsComponent(this.props.content);
   }
-  openModal() { }
-  closeWindow() { }
-
+  shouldComponentUpdate(nextProps) {
+    this.popualteWordsComponent(nextProps.content);
+    return true;
+  }
+  popualteWordsComponent(sentece) {
+    const words = sentece.split(' ');
+    this.words = words.map((word, index) => {
+      return <Word key={index} content={word} />
+    });
+  }
   render() {
     return (
-      <span></span>
+      <span class={Styles.sentenceWrapper}>
+        <span class={Styles.sentence}>
+          {this.words}
+        </span>
+        <br />
+      </span>
     );
   }
 }

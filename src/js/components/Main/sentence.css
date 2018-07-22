@@ -1,0 +1,14 @@
+.sentence{
+    float: left;
+    color: black;
+    display: block;
+    font-size: 20px;
+    position: relative;
+    font-weight: 500;
+    margin-left: 30px;
+    margin-top: 16px;
+}
+.sentenceWrapper{
+    display : block;
+     height: 52px;
+}
