@@ -36,10 +36,12 @@ export default class Footer extends React.Component {
       );
     });
   }
+  /* mwthod to handle previous page click actions */
   prevPageClik() {
     this.currentPageNumber--;
     this.props.changePage(this.currentPageNumber);
   }
+  /* mwthod to handle next page click actions */
   nextPageClik() {
     this.currentPageNumber++;
     this.props.changePage(this.currentPageNumber);
@@ -47,10 +49,10 @@ export default class Footer extends React.Component {
   render() {
     return (
       <footer class={styles.footerwrapper}>
-        <div class={styles.btmbg} style={ { backgroundImage: `url(./images/background/btm-bg.png)` } }></div>
+        <div class={styles.btmbg} style={{ backgroundImage: `url(./images/background/btm-bg.png)` }}></div>
         <div class={styles.container}>
           <div class={styles.pagination}>
-            <button href="#" class = {styles.arrow} onClick={this.prevPageClik.bind(this)} aria-label="previous">PREV</button>
+            <button href="#" class={styles.arrow} onClick={this.prevPageClik.bind(this)} aria-label="previous">PREV</button>
             <div class='pagination-wrpper'>{this.paginationDots}</div>
             <button href="#" class={styles.arrownext} onClick={this.nextPageClik.bind(this)} aria-label="next">NEXT</button>
           </div>

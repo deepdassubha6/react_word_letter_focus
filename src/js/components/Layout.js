@@ -13,9 +13,10 @@ export default class Layout extends React.Component {
     super();
     this.totalNumberOfPages = 0;
     this.data = {};
+    this.direction = {};
     this.state = {
       currentPageNumber: 0,
-      currentPageContent: ''
+      currentPageContent: '',
     };
     /* method to call data service */
     this.dataService();
@@ -31,6 +32,7 @@ export default class Layout extends React.Component {
   /* method to initialize process execution */
   init(data) {
     this.data = data;
+    this.direction = data.directions;
     this.allScreenData = data.screens;
     this.totalNumberOfPages = this.allScreenData.length;
     this.setCurrentPageContent();
@@ -48,10 +50,9 @@ export default class Layout extends React.Component {
 
   render() {
     return (
-      // <div class="main-container fill">
       <div class={Styles.mainContainer}>
         <Header title={this.data.title} />
-        <Main screenContent={this.state.currentPageContent} />
+        <Main direction = {this.direction} screenContent={this.state.currentPageContent} />
         <Footer changePage={this.changePageNumber.bind(this)} totalNumOfPages={this.totalNumberOfPages} />
       </div>
     );

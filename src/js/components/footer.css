@@ -55,3 +55,31 @@
     border-radius: 50%;
     margin-left: 2px;
 }
+
+/* not is use CSS*/
+.pagination button.active, .pagination div.active {
+    background-position: 0 -19px;
+}
+
+.pagination button.traversed, .pagination div.traversed {
+    background-position: 0px 0px;
+}
+
+.pagination button.arrow:disabled {
+    /* background: url('../images/icons/arrow_prev_disabled.png') no-repeat; */
+}
+
+.arrow:disabled:hover {
+    background-position-y: 0;
+}
+.arrownext:disabled {
+    /* background: url('../images/icons/arrow_disabled.png') no-repeat; */
+}
+
+.arrow:disabled:hover {
+    background-position-y: 0;
+}
+
+.arrow:hover, .arrownext:hover:enabled {
+    background-position-y: -31px;
+}

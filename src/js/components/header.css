@@ -52,3 +52,10 @@
     border-radius: 25px;
     background-position: -1px -1px;
 }
+.crossButton:hover {
+    background-position: -1px 40px;
+}
+
+.helpButton:hover {
+    background-position: -1px 40px;
+}

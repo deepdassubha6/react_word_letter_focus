@@ -1,14 +1,11 @@
 import React from "react";
 
-import Word from "./Word";
-
-export default class Sentence extends React.Component {
+export default class Letter extends React.Component {
   handleChange(e) {
     const title = e.target.value;
     this.props.changeTitle(title);
   }
-  openModal() { }
-  closeWindow() { }
+  populateLetter(){}
 
   render() {
     return (
