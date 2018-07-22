@@ -65,3 +65,28 @@
 .resetButton:hover {
     background-position: 0 -39px;
 }
+.answerSection {
+    height: 208px;
+    margin-left: -3px;
+    margin-right: -3px;
+    background-color: #fff;
+    border: 2px solid #0292D1;
+    margin-top: 15px;
+    min-height: 59px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 700;
+    width: 100.5%;
+}
+
+@media screen and ( max-width: 600px) {
+    .answer-box {
+        min-height: 150px;
+    }
+
+    .input-texts {
+        min-height: 50px;
+        line-height: 15px;
+    }
+
+}

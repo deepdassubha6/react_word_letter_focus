@@ -28,10 +28,6 @@
     display: none;
 }
 
-.answer-section {
-    margin-left: -3px;
-    margin-right: -3px;
-}
 .answer-box {
     height: 300px;
     padding: 0px !important;
@@ -67,36 +63,6 @@
     font-style:italic;
     font-size:19px;
 }
-
-.input-texts {
-    background-color: #fff;
-    margin-top: 15px;
-    border: 2px solid #0292D1;
-    min-height: 59px;
-    border-radius: 8px;
-    text-align: center;
-    font-weight: 700;
-    width: 100.5%;
-
-}
-
-
-.input-texts span{
-    line-height: 45px;
-    height: 45px;
-    padding-top: 5px
-}
-
-.droppable-initial {
-    position: relative;
-    display: inline-block;
-    height: 100%;
-    width:7em;
-    vertical-align: middle;
-    text-align: center;
-}
-.droppable-initial span.draggable:focus{ padding:5px;}
-
 
 video::-webkit-media-controls-panel {
     display: flex !important;
@@ -154,17 +120,6 @@ video::-webkit-media-controls-panel {
     background-position-y: -42px
 }
 
-.answer-box.droppable  span.draggable{
-    font-weight: 900; display:block;}
-
-
-.draggable {
-    text-align: center;
-    z-index: 1000;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: 900;
-}
 
 .modal-header {
     background: url(../images/background/title-bg.png) repeat-x 0 0;
@@ -226,26 +181,6 @@ video::-webkit-media-controls-panel {
         width: 20% !important;
         float: left;
     }
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-
-    .input-texts {
-        min-height: 45px;
-        margin-top: 10px;
-    }
-}
-
-@media screen and ( max-width: 600px) {
-    .answer-box {
-        min-height: 150px;
-    }
-
-    .input-texts {
-        min-height: 50px;
-        line-height: 15px;
-    }
-
 }
 
 @media screen and ( max-width: 599px) {
