@@ -1,7 +1,5 @@
 import React from "react";
-// import styles from './../../styles/style.css';
-import styles from './Footer.css';
-// import './Footer.css';
+import styles from './footer.css';
 
 
 export default class Footer extends React.Component {
@@ -34,27 +32,29 @@ export default class Footer extends React.Component {
     let totalNumberOfpageArray = this.populateArray(totalPageCount);
     this.paginationDots = totalNumberOfpageArray.map(function (item, index) {
       return (
-        <div class='active' key={index}></div>
+        <div class={styles.paginationdots} key={index}></div>
       );
     });
   }
+  /* mwthod to handle previous page click actions */
   prevPageClik() {
     this.currentPageNumber--;
     this.props.changePage(this.currentPageNumber);
   }
+  /* mwthod to handle next page click actions */
   nextPageClik() {
     this.currentPageNumber++;
     this.props.changePage(this.currentPageNumber);
   }
   render() {
     return (
-      <footer class="footer-wrapper">
-        <div class="btm-bg"></div>
-        <div class="container">
-          <div class="pagination">
-            <button href="#" class = {styles.arrow} onClick={this.prevPageClik.bind(this)} aria-label="previous">&nbsp;</button>
+      <footer class={styles.footerwrapper}>
+        <div class={styles.btmbg} style={{ backgroundImage: `url(./images/background/btm-bg.png)` }}></div>
+        <div class={styles.container}>
+          <div class={styles.pagination}>
+            <button href="#" class={styles.arrow} onClick={this.prevPageClik.bind(this)} aria-label="previous">PREV</button>
             <div class='pagination-wrpper'>{this.paginationDots}</div>
-            <button href="#" class="arrow-next" onClick={this.nextPageClik.bind(this)} aria-label="next">&nbsp;</button>
+            <button href="#" class={styles.arrownext} onClick={this.nextPageClik.bind(this)} aria-label="next">NEXT</button>
           </div>
           <div class="clearfix"></div>
         </div>

@@ -1,0 +1,59 @@
+
+.toolsWrapper {
+    /* background-color: #fff; */
+    /* border: 2px solid #0292D1; */
+    margin-top: -13px;
+    min-height: 59px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 700;
+    width: 100.5%;
+}
+.toolInitial {
+    position: relative;
+    display: inline-block;
+    height: 100%;
+    width:7em;
+    /* vertical-align: middle; */
+    /* text-align: center; */
+    cursor: pointer;
+}
+
+.wordHighlight{
+    height: 144px;
+    width: 90px;
+    cursor: pointer;
+    display: inline-block;
+}
+.wordUnderline{
+    height: 60px;
+    width: 176px;
+    cursor: pointer;
+    display: inline-block;
+}
+.letterDivide{
+    height: 90px;
+    width: 244px;
+    cursor: pointer;
+    display: inline-block;
+}
+.letterIdentification{
+    height: 90px;
+    width: 224px;
+    cursor: pointer;
+    display: inline-block;
+}
+.erase{
+    height: 100px;
+    width: 112px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+    .toolsWrapper {
+        min-height: 45px;
+        margin-top: 10px;
+    }
+}

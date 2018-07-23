@@ -1,27 +1,31 @@
 import React from "react";
 
 import Title from "./Header/Title";
+import styles from "./header.css";
 
 export default class Header extends React.Component {
   handleChange(e) {
     const title = e.target.value;
     this.props.changeTitle(title);
   }
+  openModal() { }
+  closeWindow() { }
 
   render() {
     return (
-      <header class="header-wrapper">
+      <header class={styles.headerClass} style={{ backgroundImage: `url(./images/background/header-bg.jpg)` }}>
         <div class="container">
-            <div class="header-logo"></div>
-            <div class="header-title" dangerouslySetInnerHTML={{__html: this.props.title}}></div>
-            <div class="header-icon">
-              {/* <button class="help-button open-modal" modalType="video" data-toggle="modal1" data-target="#videoModal1" ng-click="openModal()"
-                aria-label="help"></button>
-              <button class="cross-button" aria-label="cross" ng-click="closeWindow()"></button> */}
-            </div>
+          <div class={styles.headerlogo}>
+            <img class={styles.headerlogoimg} src={"./images/icons/logo.png"} alt="avatar image" />
+          </div>
+          <h1 class={styles.headerTitle} dangerouslySetInnerHTML={{ __html: this.props.title }}></h1>
+          <div class={styles.headerIcon}>
+            <button class={styles.helpButton} style={{ backgroundImage: `url(./images/icons/help_btn.png)` }} aria-label="cross" onClick={this.openModal.bind(this)}></button>
+            <button class={styles.crossButton} style={{ backgroundImage: `url(./images/icons/cross.png)` }} aria-label="cross" onClick={this.closeWindow.bind(this)}></button>
+          </div>
         </div>
         <div class="clearfix"></div>
       </header>
-        );
-      }
+    );
+  }
 }

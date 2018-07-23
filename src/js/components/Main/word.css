@@ -1,0 +1,16 @@
+.words{
+    display: inline-block;
+    margin-right: 9px;
+    position: relative;
+    cursor: pointer;
+}
+.active:hover{
+    background: #FAFA90;
+}
+
+.wordHighlight{
+    background-color: yellow;
+}
+.wordUnderline{
+    text-decoration: underline;
+}

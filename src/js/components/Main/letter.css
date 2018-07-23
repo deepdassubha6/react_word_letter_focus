@@ -1,0 +1,9 @@
+.active:hover{
+    background: #FAFA90;
+}
+.letterIdentification{
+    color: blue;
+}
+.letterDivide{
+    border-left: 2px solid red;
+}
