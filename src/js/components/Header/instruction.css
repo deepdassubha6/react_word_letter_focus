@@ -1,0 +1,93 @@
+b {
+    color: #d12229;
+}
+
+.instructionSuccessPopup {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 1010;
+}
+
+.btnClose {
+    width: 32px;
+    height: 32px;
+    background: #005a8a;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    position: absolute;
+    right: -16px;
+    top: -16px;
+    color: #fff;
+    padding: 0 !important;
+}
+
+.btnCloseFa {
+    position: absolute;
+    top: 4px;
+    left: 9px;
+}
+
+.btnClose:focus {
+    outline: #0672aa solid 2px;
+}
+
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.popupBody {
+    position: fixed;
+    width: 500px;
+    min-height: auto;
+    max-height: 480px;
+    border: 2px solid #ffce28;
+    background-color: #fff;
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    margin-left: -250px;
+    margin-top: -238px;
+}
+
+.middleCol {
+    min-height: 165px;
+    padding: 25px 0 25px 52px;
+}
+
+.textContainer {
+    padding: 0 25px 0 0;
+    position: relative;
+    overflow-y: auto;
+    min-height: auto;
+    max-height: 430px;
+    color: #000;
+}
+
+.textContainer:focus {
+    /* outline: none; */
+}
+
+.text-container p span {
+    font-weight: bold;
+    color: #d12229;
+}
+
+.btn-volume {
+    width: 28px;
+    height: 28px;
+    background-color: #ecf3f6;
+    border-radius: 50%;
+    border: 1px solid lightgray;
+    position: absolute;
+    left: 12px;
+    top: 23px;
+    color: #005a8a;
+    box-shadow: 1px 1px 1px 1px #aaa8a9;
+    padding: 0 !important;
+}

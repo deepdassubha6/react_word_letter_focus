@@ -12,7 +12,7 @@
       "value": "yellow2.png"
     },
     "help": {
-      "text":  "<b>Word Workbench</b> Help<br /><b>Answering Questions</b><br /><b>Read</b> the directions at the start of the activity.<br /><b>Read</b> the words or sentences underneath the directions.<b>Select</b> the right tool from the workbench at the bottom of the screen. You can use your tools to <b>highight a word, underline a word, identify a single letter, or divide a word</b>.<br />Once your tool is selected, <b>click</b> or <b>tap</b> on the word where you want to use it. If you on a tablet device, <b>tap twice</b> to confirm where you want to use the tool.<br />If you want to change your edits, select the <b>Erase tool</b>, and then select the word, or letter you want to change.<br />As an alternative to the mouse, the keyboard may be used. Press <b>Tab</b> to move to a desired tool or location, and then press <b>Space</b> to select your tool or word.<br />Use the <b>Check</b> button to find out if your answer is correct.<br />If the answer is incorrect, use the <b>Try Again</b> button, then choose a new answer.<br />Use the <b>Show Correct Answer</b> and <b>Back to Answer</b> buttons to compare correct answers and your responses.<br /> Use the <b>Previous</b> and <b>Next</b> buttons to navigate between question screens. You may review previous answers.<br /><b>Top Buttons</b><br />Use the button with the <b>question mark</b> to come back to this help page.<br />Use the button with the <b>X</b> to close the activity.<br />Use the button with the <b>speaker</b> to mute automatic audio feedback.\"",
+      "text":  "<b>Word Workbench</b> Help<br /><br /><b>Answering Questions</b><br /><br /><b>Read</b> the directions at the start of the activity.<br /><b>Read</b> the words or sentences underneath the directions.<b>Select</b> the right tool from the workbench at the bottom of the screen. You can use your tools to <b>highight a word, underline a word, identify a single letter, or divide a word</b>.<br />Once your tool is selected, <b>click</b> or <b>tap</b> on the word where you want to use it. If you on a tablet device, <b>tap twice</b> to confirm where you want to use the tool.<br />If you want to change your edits, select the <b>Erase tool</b>, and then select the word, or letter you want to change.<br />As an alternative to the mouse, the keyboard may be used. Press <b>Tab</b> to move to a desired tool or location, and then press <b>Space</b> to select your tool or word.<br />Use the <b>Check</b> button to find out if your answer is correct.<br />Use the <b>Previous</b> and <b>Next</b> buttons to navigate between question screens.<br /><br /><b>Top Buttons</b><br />Use the button with the <b>question mark</b> to come back to this help page.<br />Use the button with the <b>X</b> to close the activity.<br />",
       "audio": "WLF_Help.mp3"
     },
     "screens": [
@@ -27,7 +27,8 @@
             "text": [
                "{wh}Sarah{/wh} walks her dog. ",
                "The {wh}dog{/wh} has brown spots. ",
-               "The {wh}leash{/wh} is in the closet."
+               "The {wh}leash{/wh} is in the closet.",
+               "It's is a nice {wh}sunny{/wh} day."
             ]
           }
         },
@@ -52,7 +53,7 @@
           "sentence": {
             "text": [
                "{wh}They{/wh} walk to the park. ",
-               "{wh}Sarah's dog{/wh} likes to walk.",
+               "{wh}Sarah's{/wh} dog likes to walk.",
                "{wh}Mark{/wh} feeds the dog. ",
                "The {wh}food{/wh} goes into a bowl. "
             ]

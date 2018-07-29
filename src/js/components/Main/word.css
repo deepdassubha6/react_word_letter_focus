@@ -14,3 +14,7 @@
 .wordUnderline{
     text-decoration: underline;
 }
+.bothAction{
+    background-color: yellow;
+    text-decoration: underline;
+}

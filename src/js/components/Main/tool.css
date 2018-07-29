@@ -8,6 +8,7 @@
     text-align: center;
     font-weight: 700;
     width: 100.5%;
+    /* min-width: 768px; */
 }
 .toolInitial {
     position: relative;

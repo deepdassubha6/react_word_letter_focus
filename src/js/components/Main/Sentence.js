@@ -12,6 +12,8 @@ export default class Sentence extends React.Component {
     this.popualteWordsComponent(nextProps.content);
     return true;
   }
+  componentWillReceiveProps(nextProps) {
+  }
   popualteWordsComponent(sentece) {
     const words = sentece.split(' ');
     this.words = words.map((word, index) => {
@@ -20,8 +22,8 @@ export default class Sentence extends React.Component {
   }
   render() {
     return (
-      <span class={Styles.sentenceWrapper}>
-        <span class={Styles.sentence}>
+      <span class={Styles.sentenceWrapper} >
+        <span class={Styles.sentence} id='sentence'>
           {this.words}
         </span>
         <br />

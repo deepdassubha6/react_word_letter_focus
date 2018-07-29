@@ -10,18 +10,25 @@ export default class Main extends React.Component {
     constructor(props) {
         super(props);
         this.direction = '';
-        this.slideCorrectAnswer = {
-            'wh': [],
-            'wu': [],
-            'li': [],
-            'ld': []
-        };
-        this.allSentences = [];
+        this.slideCorrectAnswer = [];
     }
     shouldComponentUpdate(nextProps) {
+        this.allSentences = [];
         this.init(nextProps.screenContent);
         this.populateDirection(nextProps.direction);
+        this.resetRightWrong();
         return true;
+    }
+    /* reset all right wrong visibility */
+    resetRightWrong() {
+        const allRightIndicatorSpan = document.querySelectorAll('#right');
+        const allWrongIndicatorSpan = document.querySelectorAll('#wrong');
+        for (let i = 0; i < allRightIndicatorSpan.length; i++) {
+            this.setStyle(allRightIndicatorSpan[i], 'display', 'none');
+        }
+        for (let i = 0; i < allWrongIndicatorSpan.length; i++) {
+            this.setStyle(allWrongIndicatorSpan[i], 'display', 'none');
+        }
     }
     /* first method to get call */
     init(data) {
@@ -38,10 +45,12 @@ export default class Main extends React.Component {
         for (let sentence of allSentenceArray) {
             let allWords = sentence.trim().split(' ');
             let sentenceAfterTrim = '';
+            this.sentenceCorrectAnswer = { 'wh': [], 'wu': [], 'li': [], 'ld': [] };
             for (let word of allWords) {
                 let wordAfterTrim = this.findWordOperation(word);
                 sentenceAfterTrim += ` ${wordAfterTrim}`;
             }
+            this.slideCorrectAnswer.push(this.sentenceCorrectAnswer);
             this.allSentences.push(sentenceAfterTrim.trim());
         }
         this.populateSentenceComponent();
@@ -50,42 +59,74 @@ export default class Main extends React.Component {
     findWordOperation(word) {
         if (word.indexOf('{wh}') >= 0 && word.indexOf('{/wh}') >= 0) {
             word = word.match("{wh}(.*){/wh}")[1];
-            this.slideCorrectAnswer.wh.push(word);
+            this.sentenceCorrectAnswer.wh.push(word);
         } else if (word.indexOf('{wu}') >= 0 && word.indexOf('{/wu}') >= 0) {
             word = word.match("{wu}(.*){/wu}")[1];
-            this.slideCorrectAnswer.wu.push(word);
+            this.sentenceCorrectAnswer.wu.push(word);
         } else if (word.indexOf('{li}') >= 0 && word.indexOf('{/li}') >= 0) {
             word = word.match("{li}(.*){/li}")[1];
-            this.slideCorrectAnswer.li.push(word);
+            this.sentenceCorrectAnswer.li.push(word);
         } else if (word.indexOf('{ld}') >= 0 && word.indexOf('{/ld}') >= 0) {
             word = word.match("{ld}(.*){/ld}")[1];
-            this.slideCorrectAnswer.ld.push(word);
+            this.sentenceCorrectAnswer.ld.push(word);
         }
         return word;
     }
     /* popuplate sentence component */
     populateSentenceComponent() {
         this.allSentencesComponents = this.allSentences.map((sentence, index) => {
-            return <Sentence key={index} content={sentence} />
+            return (
+                <span key={index} id='indicator'>
+                    <span id="right" class={Styles.correctWrong} style={{ backgroundImage: `url(./images/icons/right.png)` }}></span>
+                    <span id="wrong" class={Styles.correctWrong} style={{ backgroundImage: `url(./images/icons/wrong.png)` }}></span>
+                    <Sentence content={sentence} />
+                </span>
+            )
         });
-    }
-    /* check correct answers */
-    checkCorrectAnswer() {
-        // @from for loop need to call validate()
-        this.validate();
     }
     /* validate user response */
     validate() {
-        const userAnswers = this.getAnswers();
-        // validate with correct ans
+        let userAnswers = [];
+        this.afterAttemptAllSentences = [];
+        this.afterAttemptAllSentences = document.querySelectorAll('#sentence');
+        for (let i = 0; i < this.slideCorrectAnswer.length; i++) {
+            let userAnswersPerSentence = this.getAnswers(this.afterAttemptAllSentences[i]);
+            userAnswers.push(userAnswersPerSentence);
+        }
+        this.checkAnswers(userAnswers);
     }
-    /* get user user response */
-    getAnswers() {
-
+    /* get user response */
+    getAnswers(senteceAfterAttempt) {
+        const highlightedWords = this.takeTextOfAnswer(senteceAfterAttempt.querySelectorAll('#wordHighlight'));
+        const unserlinedWords = this.takeTextOfAnswer(senteceAfterAttempt.querySelectorAll('#wordUnderline'));
+        const letterIdentification = this.takeTextOfAnswer(senteceAfterAttempt.querySelectorAll('#letterIdentification'));
+        const letterDivide = this.takeTextOfAnswer(senteceAfterAttempt.querySelectorAll('#letterDivide'));
+        return { 'wh': highlightedWords, 'wu': unserlinedWords, 'li': letterIdentification, 'ld': letterDivide };
+    }
+    /* method to check user answers with qution answers */
+    checkAnswers(userAnswerObj) {
+        let allSentencesAfterAttempt = document.querySelectorAll('#indicator');
+        for (let i = 0; i < userAnswerObj.length; i++) {
+            let isCorrect = JSON.stringify(this.slideCorrectAnswer[i]) === JSON.stringify(userAnswerObj[i]);
+            let spanToFetch = isCorrect ? 'right' : 'wrong';
+            this.setStyle(allSentencesAfterAttempt[i].querySelectorAll(`#${spanToFetch}`)[0], 'display', 'block');
+        }
+    }
+    /* method to set sstyle */
+    setStyle(elm, styAttribute, ValueToSet) {
+        elm.style[styAttribute] = ValueToSet; // if already not a string
+    }
+    /* get text method from user answers (words/letters) array */
+    takeTextOfAnswer(answers) {
+        let userAnswer = [];
+        for (let i = 0; i < answers.length; i++) {
+            userAnswer.push(answers[i].textContent);
+        }
+        return userAnswer;
     }
     /* method to reset all selection */
     reset() {
-
+        this.forceUpdate();
     }
 
     render() {
@@ -95,7 +136,8 @@ export default class Main extends React.Component {
                     <h2 class={Styles.direction} dangerouslySetInnerHTML={{ __html: this.direction }}></h2>
                     <div class="content">
                         <div class={Styles.slideData}>
-                            <div class="slide-section" role="application">
+                            {/* <div class="slide-section" role="application"> */}
+                            <div class="slide-section">
                                 <div class={Styles.answerSection}>
                                     {this.allSentencesComponents}
                                     <div class="clearfix"></div>

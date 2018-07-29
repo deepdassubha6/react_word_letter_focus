@@ -39,11 +39,13 @@ export default class Footer extends React.Component {
   /* mwthod to handle previous page click actions */
   prevPageClik() {
     this.currentPageNumber--;
+    this.currentPageNumber < 0 ? this.currentPageNumber = (this.totalPageCount - 1) : '';
     this.props.changePage(this.currentPageNumber);
   }
   /* mwthod to handle next page click actions */
   nextPageClik() {
     this.currentPageNumber++;
+    this.currentPageNumber > (this.totalPageCount - 1) ? this.currentPageNumber = 0 : '';
     this.props.changePage(this.currentPageNumber);
   }
   render() {
@@ -52,9 +54,9 @@ export default class Footer extends React.Component {
         <div class={styles.btmbg} style={{ backgroundImage: `url(./images/background/btm-bg.png)` }}></div>
         <div class={styles.container}>
           <div class={styles.pagination}>
-            <button href="#" class={styles.arrow} onClick={this.prevPageClik.bind(this)} aria-label="previous">PREV</button>
+            <button disabled={this.setState.prevDisable} href="#" class={styles.arrow} onClick={this.prevPageClik.bind(this)} aria-label="previous">PREV</button>
             <div class='pagination-wrpper'>{this.paginationDots}</div>
-            <button href="#" class={styles.arrownext} onClick={this.nextPageClik.bind(this)} aria-label="next">NEXT</button>
+            <button disabled={this.setState.nextDisable} href="#" class={styles.arrownext} onClick={this.nextPageClik.bind(this)} aria-label="next">NEXT</button>
           </div>
           <div class="clearfix"></div>
         </div>
