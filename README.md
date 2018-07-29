@@ -3,7 +3,7 @@ This is a simple react application.
 This application uses props and states to communicate between different components.
 It uses simple CSS for styling purpose.
 
-Application is devided into multiple componnent -
+Application is divided into multiple componnent -
 Layout component is the top level component which holds other top level components like -
 1. Header
 2. Main
