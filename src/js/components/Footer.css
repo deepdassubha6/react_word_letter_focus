@@ -25,7 +25,10 @@
     border-radius: 25px;
     display: inline-block;
     background-position-y: -37px;
-    border: 0;
+    border:2px solid aliceblue;
+    background: darkslategrey;
+    color: cornsilk;
+    
 }
 .arrownext {
     /* width: 34px;
@@ -37,7 +40,10 @@
     border-radius: 25px;
     display: inline-block;
     background-position-y: -37px;
-    border: 0;
+    border:2px solid aliceblue;
+    background: darkslategrey;
+    color: cornsilk;
+    
 }
 .pagination {
     margin-top: 10px;
@@ -50,10 +56,11 @@
     height: 20px;
     display: inline-block;
     background-position-y: -37px;
-    border: 0;
-    background-color: yellow;
+    border: 2px solid;
+    background-color: darksalmon;
     border-radius: 50%;
-    margin-left: 2px;
+    margin: 3px;
+    opacity: 0.9;
 }
 
 /* not is use CSS*/
