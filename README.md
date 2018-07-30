@@ -1,7 +1,8 @@
 # Work Bench
 This is a simple react application.
-This application uses props and states to communicate between different components.
-It uses simple CSS for styling purpose.
+- This application uses props and states to communicate between different components.
+- It uses simple CSS for styling purpose and,
+- It is fully keyboard operable. 
 
 Application is divided into multiple componnent -
 Layout component is the top level component which holds other top level components like -
@@ -15,8 +16,7 @@ Further inside the Main componet there are -
 3. Lette component
 4. Tools component
 
-This application is fully keyboard operable. 
-
+To run this application : 
 Clone or download the application and run the following command -
 - npm intall
 - npm run dev
